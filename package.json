@@ -1,0 +1,19 @@
+{
+  "name": "pwa-jogo-da-velha",
+  "version": "1.0.0",
+  "description": "PWA simples de um jogo da velha",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mooniemd/pwa-jogo-da-velha.git"
+  },
+  "author": "Moonie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mooniemd/pwa-jogo-da-velha/issues"
+  },
+  "homepage": "https://github.com/Mooniemd/pwa-jogo-da-velha#readme"
+}
