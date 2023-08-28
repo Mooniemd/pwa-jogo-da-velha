@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'VT323', monospace;
+}
+
+.display{
+    margin: auto;
+    display: grid;
+    justify-content: center;
+}
+
+p{
+    font-size: 20px;
+    margin: 10px;
+}
+.container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    max-width: 310px;
+}
+
+.block {
+    border: 2px solid black;
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.reiniciarbtn{
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-width: 310px;
+    margin-top: 10px;
+    min-height: 35px;
+    cursor: pointer;
+    background-color: #dbebfb;
+    border: 2px solid black;
+    transition: 0.5s;
+}
+
+.reiniciarbtn:hover{
+    background-color: #cad9e8;
+    transition: 0.5s;
+}
+
+.jogadorX {
+    color: #a3e3a4;
+}
+
+.jogadorO {
+    color: #fb5b7b;
+}
