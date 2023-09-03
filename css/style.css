@@ -6,6 +6,11 @@
     font-family: 'VT323', monospace;
 }
 
+body{
+    background-color: #2D2A32;
+    margin-top: 7em;
+}
+
 .display{
     margin: auto;
     display: grid;
@@ -15,14 +20,19 @@
 p{
     font-size: 40px;
     margin: 10px;
+    color: white;
+}
+
+.anunciar{
+    color: white;
 }
 .container {
     margin: auto;
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 33% 33% 33%;
-    max-width: 310px;
-    background-color: #dbebfb;
+    max-width: 305px;
+    max-height: 305px;
 }
 
 .block {
@@ -34,7 +44,9 @@ p{
     align-items: center;
     font-size: 50px;
     cursor: pointer;
+    background-color: #D6DBD2;
 }
+
 
 .reiniciarbtn{
     margin: auto;
@@ -45,22 +57,24 @@ p{
     margin-top: 10px;
     min-height: 35px;
     cursor: pointer;
-    background-color: #6c727c;
+    background-color: #aa435b;
+    color: white;
     border: 2px solid black;
     transition: 0.5s;
-    color: white;
     font-size: 15px;
 }
 
 .reiniciarbtn:hover{
-    background-color: #4c545c;
+    background-color: #853548;
     transition: 0.5s;
 }
 
 .jogadorX {
+    text-align: center;
     color: #a3e3a4;
 }
 
 .jogadorO {
+    text-align: center;
     color: #fb5b7b;
 }

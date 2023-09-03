@@ -22,6 +22,6 @@
     "lang": "pt-BR",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#fff",
-    "theme_color": "#fff"
+    "background_color": "#2D2A32",
+    "theme_color": "#2D2A32"
 }

@@ -52,49 +52,96 @@ const atualizarTabuleiro =  (index) => {
     jogadorDisplay.classList.add(`Jogador${jogadorAtual}`);
 }
 
+// simplesmente anuncia quem vence ou se deu empate
 const anuncio = (type) => {
     switch(type){
-       case jogadorOvence:
+       case "O":
             anunciar.innerHTML = 'jogador <span class="jogadorO">O</span> venceu!';
             break;
-       case jogadorXvence:
+       case "X":
             anunciar.innerHTML = 'jogador <span class="jogadorX">X</span> venceu!';
             break;
        case empate:
-            anunciar.innerText = 'Que pena, deu empate!';
+            anunciar.innerHTML = 'Que pena, deu empate!';
         }
-    anunciar.classList.remove('hide');
 };
 
+var jogadas = 0;
+
+// checagem de quem venceu e como funciona a seleção dos bloquinhos
 function resultado(){
-    const vitoria = false;
-    for (let i = 0; i <=7; i++){
-        const condicao = condicaoDeVitoria[i];
-        const block1 = tabuleiro[condicao[0]];
-        const block2 = tabuleiro[condicao[1]];
-        const block3 = tabuleiro[condicao[2]];
-        if (block1 == "" || block2 == "" || block3 == ""){
-        }
-        if (block1 == block2 && block2 == block3){
-            vitoria = true
+    let vitoria = false;
+
+    valores = []
+    for(let i = 0; i < blocks.length; i++){
+        valores [i] = blocks[i].innerHTML
+    }
+
+    if(valores[0] != '' && valores[1] != '' && valores[2] != ''){
+        if(valores[0] == valores[1] && valores[1] == valores[2]){
+            return anuncio(valores[0])
         }
     }
+
+    if(valores[3] != '' && valores[4] != '' && valores[5] != ''){
+        if(valores[3] == valores[4] && valores[4] == valores[5]){
+            return anuncio(valores[3])
+        }
+    }
+
+    if(valores[6] != '' && valores[7] != '' && valores[8] != ''){
+        if(valores[6] == valores[7] && valores[7] == valores[8]){
+            return anuncio(valores[6])
+        }
+    }
+
+    if(valores[0] != '' && valores[3] != '' && valores[6] != ''){
+        if(valores[0] == valores[3] && valores[3] == valores[6]){
+            return anuncio(valores[0])
+        }
+    }
+
+    if(valores[1] != '' && valores[4] != '' && valores[7] != ''){
+        if(valores[1] == valores[4] && valores[4] == valores[7]){
+            return anuncio(valores[1])
+        }
+    }
+
+    if(valores[2] != '' && valores[5] != '' && valores[8] != ''){
+        if(valores[2] == valores[5] && valores[5] == valores[8]){
+            return anuncio(valores[2])
+        }
+    }
+
+    if(valores[0] != '' && valores[4] != '' && valores[8] != ''){
+        if(valores[0] == valores[4] && valores[4] == valores[8]){
+            return anuncio(valores[0])
+        }
+    }
+
+    if(valores[2] != '' && valores[4] != '' && valores[6] != ''){
+        if(valores[2] == valores[4] && valores[4] == valores[6]){
+            return anuncio(valores[2])
+        }
+    }
+
     if (vitoria){
-        anuncio(jogadorAtual == "X" ? jogadorAtual = jogadorXvence : jogadorAtual = jogadorOvence);
-        jogoAtivo = false
+        anuncio(jogadorAtual == "X" ? jogadorOvence : jogadorXvence);
+        jogoAtivo = false;
         return;
     }
+    if (jogadas == 9) anuncio(empate);
 
-    if (!tabuleiro.includes("")) anuncio(empate);
 }
 
-//código pra mostrar de quem é a ação e no final muda o jogador (não tá funcionando também)
+//código pra mostrar de quem é a ação e no final muda o jogador
 const acao = (block , index) => {
     if (movimentoValido(block) && jogoAtivo) {
+      jogadas++
       block.innerText = jogadorAtual;
       block.classList.add(`Jogador${jogadorAtual}`);
-      atualizarTabuleiro(index);
       resultado();
+      atualizarTabuleiro(index);
       mudarJogador();
     }
   };
@@ -122,7 +169,7 @@ const reiniciarTabuleiro = () => {
         block.classList.remove('playerO');
     });
 
-    anunciar.classList.add('hide');
+    jogadas = 0
 }
 
 reiniciarBtn.addEventListener('click', reiniciarTabuleiro);
