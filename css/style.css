@@ -47,6 +47,10 @@ p{
     background-color: #D6DBD2;
 }
 
+.block:hover{
+    background-color: #bec2ba;
+}
+
 
 .reiniciarbtn{
     margin: auto;
