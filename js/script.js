@@ -1,3 +1,10 @@
+window.onload = () => {
+    'use strict';
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+    }
+}
+
 // até a linha 26 são os códigos base de checagem e definição
 
 const blocks = Array.from(document.querySelectorAll('.block'));

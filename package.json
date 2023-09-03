@@ -4,7 +4,8 @@
   "description": "PWA simples de um jogo da velha",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "serve ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Mooniemd/pwa-jogo-da-velha/issues"
   },
-  "homepage": "https://github.com/Mooniemd/pwa-jogo-da-velha#readme"
+  "homepage": "https://github.com/Mooniemd/pwa-jogo-da-velha#readme",
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
 }
