@@ -3,6 +3,7 @@
 const blocks = Array.from(document.querySelectorAll('.block'));
 const jogadorDisplay = document.querySelector('.display-jogador');
 const reiniciarBtn = document.querySelector('#reiniciar');
+const anunciar = document.querySelector('.anunciar')
 
 var tabuleiro = [
     ['', '', ''],
@@ -39,9 +40,45 @@ const atualizarTabuleiro =  (index) => {
 //código que muda o jogador conforme o click (não tá funcionando ainda)
  const mudarJogador = () => {
     jogadorDisplay.classList.remove(`Jogador${jogadorAtual}`);
-    currentPlayer = jogadorAtual === 'X' ? 'O' : 'X';
+    jogadorAtual == 'X' ? jogadorAtual = 'O' : jogadorAtual = 'X';
     jogadorDisplay.innerText = jogadorAtual;
     jogadorDisplay.classList.add(`Jogador${jogadorAtual}`);
+}
+
+const anuncio = (type) => {
+    switch(type){
+       case jogadorOvence:
+            anunciar.innerHTML = 'jogador <span class="jogadorO">O</span> venceu!';
+            break;
+       case jogadorXvence:
+            anunciar.innerHTML = 'jogador <span class="jogadorX">X</span> venceu!';
+            break;
+       case empate:
+            anunciar.innerText = 'Que pena, deu empate!';
+        }
+    anunciar.classList.remove('hide');
+};
+
+function resultado(){
+    const vitoria = false;
+    for (let i = 0; i <=7; i++){
+        const condicao = condicaoDeVitoria[i];
+        const block1 = tabuleiro[condicao[0]];
+        const block2 = tabuleiro[condicao[1]];
+        const block3 = tabuleiro[condicao[2]];
+        if (block1 == "" || block2 == "" || block3 == ""){
+        }
+        if (block1 == block2 && block2 == block3){
+            vitoria = true
+        }
+    }
+    if (vitoria){
+        anuncio(jogadorAtual == "X" ? jogadorAtual = jogadorXvence : jogadorAtual = jogadorOvence);
+        jogoAtivo = false
+        return;
+    }
+
+    if (!tabuleiro.includes("")) anuncio(empate);
 }
 
 //código pra mostrar de quem é a ação e no final muda o jogador (não tá funcionando também)
@@ -49,15 +86,15 @@ const acao = (block , index) => {
     if (movimentoValido(block) && jogoAtivo) {
       block.innerText = jogadorAtual;
       block.classList.add(`Jogador${jogadorAtual}`);
-      updateBoard(index);
-      handleResultValidation();
+      atualizarTabuleiro(index);
+      resultado();
       mudarJogador();
     }
   };
 
-  blocks.forEach( (block, index) => {
+    blocks.forEach( (block, index) => {
     block.addEventListener('click', () => acao(block, index));
-});
+    });
 
 // reinicia o tabuleiro checando quem tá jogando e setando o texto pra vazio.
 const reiniciarTabuleiro = () => {
@@ -77,6 +114,8 @@ const reiniciarTabuleiro = () => {
         block.classList.remove('playerX');
         block.classList.remove('playerO');
     });
+
+    anunciar.classList.add('hide');
 }
 
-reiniciar.addEventListener('click', reiniciarTabuleiro);
+reiniciarBtn.addEventListener('click', reiniciarTabuleiro);
